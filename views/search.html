@@ -1,0 +1,18 @@
+﻿<div>
+    Search:
+    <ul>
+        <li><a href="#search?A=1">Param A = 1</a></li>
+        <li><a href="#search?B=2">Param B = 2</a></li>
+        <li><a href="#search?A=3&B=4">Param A = 3, B = 4</a></li>
+        <li><a href="#search">Empty Search</a></li>
+    </ul>
+    <div>
+        <label>A</label>
+        <input ng-model="search.A" />
+    </div>
+    <div>
+        <label>B</label>
+        <input ng-model="search.B" />
+        <a ng-href="#search?{{search.GetQuery()}}">Go</a>
+    </div>
+</div>
