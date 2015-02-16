@@ -9,6 +9,7 @@
         <a ui-sref="search">Search</a>
         <a ui-sref="extra">Extra</a>
         <a href="#search?A=5&B=6">Search A5 B6</a>
+        <a ui-sref="items">Items</a>
     </div>
     <hr />
     <div ui-view>
@@ -44,7 +45,21 @@
                 controller: "Search",
                 controllerAs: "search",
                 reloadOnSearch: false
-            })
+            });
+
+            $stateProvider.state("items", {
+                url: "/items",
+                templateUrl: "views/items.html",
+                controller: "Items",
+                controllerAs: "items"
+            });
+
+            $stateProvider.state("items.list", {
+                url: "/items/list",
+                templateUrl: "views/items.list.html",
+                controller: "ItemsList",
+                controllerAs: "list"
+            });
         }
 
         app.controller("Search", search);
@@ -76,6 +91,18 @@
             function locationChange() {
                 console.log("Location change :::", $location.search());
             }
+        }
+        
+        app.controller("Items", items);
+        
+        function items() {
+            console.log("loaded items");
+        }
+
+        app.controller("ItemsList", itemsList);
+
+        function itemsList() {
+            console.log("search loaded");
         }
     </script>
 </body>
