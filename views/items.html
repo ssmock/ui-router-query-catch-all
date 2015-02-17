@@ -1,10 +1,19 @@
 ﻿<h3>
-    Find!
+    Find items
 </h3>
 <hr />
 <div>
-    Params go here
-    <a ui-sref="items.list">Show List</a>
+    <ul>
+        <li><a ui-sref="items.list({ A: null, B: null })">Empty</a></li>
+        <li><a ui-sref="items.list({ A: 1, B: null })">A 1</a></li>
+        <li><a ui-sref="items.list({ A: null, B: 2 })">B 2</a></li>
+        <li><a ui-sref="items.list({ A: 2, B: 4 })">B 2</a></li>
+    </ul>
+    <div>
+        <input ng-model="list.A" placeholder="A" /><br />
+        <input ng-model="list.B" placeholder="B" />
+        <a ui-sref="items.list({ A: list.A, B: list.B })">Go</a>
+    </div>
 </div>
 <hr />
 <div ui-view>

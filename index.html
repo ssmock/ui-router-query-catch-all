@@ -55,7 +55,11 @@
             });
 
             $stateProvider.state("items.list", {
-                url: "/items/list",
+                url: "/items/list?A&B",
+                params: {
+                    A: { value: "", squash: true },
+                    B: { value: "", squash: true }
+                },
                 templateUrl: "views/items.list.html",
                 controller: "ItemsList",
                 controllerAs: "list"
@@ -80,7 +84,7 @@
             }
 
             function activate() {
-                console.log("-beg------------------------------------");
+                console.log("-beg-search-----------------------------");
                 console.log("Searching :::", new Date());
                 console.log("Location :::", $location.search());
                 console.log("-end------------------------------------");
@@ -92,17 +96,22 @@
                 console.log("Location change :::", $location.search());
             }
         }
-        
+
         app.controller("Items", items);
-        
+
         function items() {
             console.log("loaded items");
         }
 
         app.controller("ItemsList", itemsList);
 
-        function itemsList() {
-            console.log("search loaded");
+        itemsList.$inject = ["$stateParams"]
+
+        function itemsList($stateParams) {
+            console.log("-beg-items-list-------------------------");
+            console.log("Searching :::", new Date());
+            console.log("StateParams :::", $stateParams);
+            console.log("-end------------------------------------");
         }
     </script>
 </body>
